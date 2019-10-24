@@ -22,25 +22,24 @@ import br.ufsc.ine.agent.context.plans.PlansContextService;
 import br.ufsc.ine.parser.AgentWalker;
 import br.ufsc.ine.parser.VerboseListener;
 import ontologicExperiment.actuators.BuildQuestion;
-import ontologicExperiment.actuators.PersistBelief;
 import ontologicExperiment.sensors.AnswerSensor;
 
 public class Main {
 
-	
 	private AnswerSensor answerSensor;
 	private BuildQuestion buildQuestion;
-	private PersistBelief persistBelief;
 	
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		startAgent();
 		int total = 100;
-		long startTime = 0;  	  	
+		long startTime = 0;  
+		Thread.sleep(2000);
+		percept(1);
 		for (int i = 0; i < total; i++) {
 			//startTime = System.nanoTime();
-			//Thread.sleep(5000);
-			percept(i);
+//			Thread.sleep(2000);
+//			percept(1);
 			//reasoningCycle(startTime, i+1);
 			
 		}
@@ -77,8 +76,7 @@ public class Main {
 	
 	private static void percept(int index) {
 
-		AnswerSensor.answerObservable.onNext("d" + index + ".");
-		
+		AnswerSensor.answerObservable.onNext("d" + index + ".");		
 
 		System.out.println("CC " + CommunicationContextService.getInstance().getTheory());
 		System.out.println("BC " + BeliefsContextService.getInstance().getTheory().toString());

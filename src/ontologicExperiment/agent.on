@@ -1,17 +1,18 @@
 communication:
     sensor("answerSensor", "ontologicExperiment.sensors.AnswerSensor").
 	actuator("buildQuestion", "ontologicExperiment.actuators.BuildQuestion").
-	actuator("persist", "ontologicExperiment.actuators.PersistBelief").
 
 beliefs:
     
 desires:
-			
+
 intentions:
-	questionAbout(malta,right).
-
-! intentions questionAbout(X,right) :- _ontologic newResource(X).
-
+	questionAbout(malta,rigth).
+	
 _ontologic: 
 
-! _ontologic question(X) :- intentions questionAbout(X, _).
+! desires questionAbout(X,rigth) :- _ontologic newResource(X).
+
+! _ontologic question(X) :- intentions questionAbout(X,rigth).
+
+! communication buildQuestion(X,Y) :- _ontologic officialLanguage(malta,X) & _ontologic officialLanguage(malta,Y).
